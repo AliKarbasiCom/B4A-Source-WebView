@@ -1,0 +1,64 @@
+﻿Build1=Default,b4a.example
+File1=mainlayout.bal
+FileGroup1=Default Group
+Group=Default Group
+IconFile=
+Library1=core
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="26"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=1
+NumberOfLibraries=1
+NumberOfModules=1
+Version=9.01
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: webview
+	#VersionCode: 1
+	#VersionName: 1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+
+
+End Sub
+
+Sub Globals
+
+	Private WebView1 As WebView
+	Private Label1 As Label
+	
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+
+	Activity.LoadLayout("mainlayout")
+	WebView1.LoadUrl("https://akarbasi.ir")
+	WebView1.Visible=False
+	ProgressDialogShow2("لطفا صبور باشید ...",False)
+'	Label1.Visible=True
+
+	
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub WebView1_PageFinished (Url As String)
+	ToastMessageShow("Done!",False)
+	WebView1.Visible=True
+	ProgressDialogHide
+'	Label1.Visible=False
+End Sub
